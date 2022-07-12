@@ -9,7 +9,6 @@ class LinkedList:
 
     def insert(self, value):
         node = Node(value)
-        current = None
         if self.head == None:
             self.head = node
         else:
