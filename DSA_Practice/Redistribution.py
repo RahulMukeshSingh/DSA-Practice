@@ -1,5 +1,5 @@
 mod = 1000000007 #10^9 + 7
-inputSum = 90
+inputSum = 89
 memory = {}
 
 def sumSubsequence(currSum = 0):
@@ -12,5 +12,7 @@ def sumSubsequence(currSum = 0):
     count = count % mod    
     memory[currSum] = count    
     return count
-
 print(sumSubsequence())
+
+
+#342153274
