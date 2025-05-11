@@ -3,6 +3,7 @@ def gameOfLife(self, board):
     :type board: List[List[int]]
     :rtype: None Do not return anything, modify board in-place instead.
     """
+    # Using 4 States
     rows, cols = len(board), len(board[0])
     directions = [(-1,-1),(-1,0),(-1,1), (0,-1),(0,1),(1,-1),(1,0),(1,1)]
     for i in range(rows):
