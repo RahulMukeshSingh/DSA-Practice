@@ -4,30 +4,29 @@ class Solution(object):
         :type asteroids: List[int]
         :rtype: List[int]
         """
-        positive_index = -1
-        negative_index = -1
-
-        while len(asteroids) > 0:
-            positive_index = -1
-            negative_index = -1
-            for i in range(1,len(asteroids)):
-                if asteroids[i] < 0 and asteroids[i-1] > 0:
-                    positive_index = i-1
-                    negative_index = i
-                    break
-            if(positive_index != -1 and negative_index != -1):
-                delta = asteroids[positive_index] + asteroids[negative_index]
-                if delta == 0:
-                    asteroids.pop(negative_index) 
-                    asteroids.pop(positive_index)      
-                elif delta < 0:
-                    asteroids.pop(positive_index)
-                else:
-                    asteroids.pop(negative_index)
-            else:
-                break
-            
-        return asteroids                     
+        if not asteroids: return []
+        output_stack = []
+        i = 0
+        while i < len(asteroids):
+            ast = asteroids[i]
+            if not output_stack: 
+                 output_stack.append(ast)
+                 i += 1
+                 continue
+            last_element = output_stack[-1] #last element
+            delta = last_element + ast
+            if ast > 0: 
+                output_stack.append(ast)
+                i += 1
+            elif last_element < 0: 
+                output_stack.append(ast)
+                i += 1
+            elif delta == 0: 
+                output_stack.pop()
+                i+=1    
+            elif delta < 0: output_stack.pop()
+            else: i+=1
+        return output_stack                                        
                 
 
 sol = Solution()
